@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IMDb helper</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    <link rel="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" type="text/css"/>
+    <script>
+        $(document).ready(function() {
+            $('#wanted_actors').multiselect({
+                maxHeight: 200,
+                enableFiltering: true,
+                enableCaseInsensitiveFiltering: true,
+            });
+        });
+    </script>
+    <style>
+        .list {
+          text-align: center;
+          list-style-position: inside;
+        }
+        .ref {
+            color: black;
+            border:1px solid #ccc;
+            padding: 10px 10px;
+            text-decoration: none;
+            alignment: center;
+            border-radius: 4px;
+            box-shadow: 0 0 1px 1px rgba(0,0,0,0.2);
+        }
+        .ref:active {
+            box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.2);
+        }
+        .ref:hover {
+            color: black;
+            text-decoration: none;
+        }
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .submit {
+            border:1px solid #ccc;
+            background-color: white;
+            padding: 5px 10px;
+            box-shadow: 0 0 1px 1px rgba(0,0,0,0.2);
+            border-radius: 4px;
+        }
+        .submit:active {
+            box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a class="ref" href="/">Вернуться на главную</a>
+</div>
+<br>
+<form align="center" action="/search_by_actors" method="POST">
+    <label for="wanted_actors">Выберите актеров (не более 3-х)</label><br>
+    <select id="wanted_actors" name="wanted_actors" multiple>
+        {% for actor in actors %}
+        <option value="{{ actor }}">{{ actor }}</option>
+        {% endfor %}
+    </select>
+    <input class="submit" type="submit" value="Найти">
+</form>
+{% if not empty %}
+    {% if not start %}
+        <br>
+        <h3 align="center">Подходящие фильмы:</h3>
+        <ul class="list">
+        {% for i in matched %}
+            <li>{{ i }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% else %}
+    <p align="center">Нет фильмов с указанными жанрами или Вы указали более 3 актеров</p>
+{% endif %}
+</body>
+</html>

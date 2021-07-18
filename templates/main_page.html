@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IMDb helper</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    <link rel="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" type="text/css"/>
+    <style>
+        .ref {
+            color: black;
+            border:1px solid #ccc;
+            padding: 10px 10px;
+            margin: 10px 10px 10px 10px;
+            text-decoration: none;
+            alignment: center;
+            border-radius: 4px;
+            box-shadow: 0 0 1px 1px rgba(0,0,0,0.2);
+        }
+        .ref:active {
+            box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.2);
+        }
+        .ref:hover {
+            color: black;
+            text-decoration: none;
+        }
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a class="ref" href="/search_by_genres">Поиск фильмов по жанрам</a>
+    <a class="ref" href="/search_by_actors">Поиск фильмов по актерам</a>
+    <a class="ref" href="/guess">Викторина</a>
+</div>
+</body>
+</html>
